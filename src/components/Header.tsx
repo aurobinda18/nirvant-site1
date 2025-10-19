@@ -3,8 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { Menu, X } from "lucide-react"; // lightweight icons
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const menu = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
@@ -29,21 +33,52 @@ export default function Header() {
           />
         </Link>
 
-        {/* Menu */}
-        <nav>
-          <ul className="hidden md:flex gap-4 md:gap-6 text-gray-700 font-medium">
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex gap-4 md:gap-6 text-gray-700 font-medium">
+          {menu.map((item) => (
+            <motion.li
+              key={item.name}
+              whileHover={{ scale: 1.05 }}
+              className="list-none relative px-3 py-1 rounded-full hover:bg-sky-400/30 transition-colors duration-200"
+            >
+              <Link href={item.href}>{item.name}</Link>
+            </motion.li>
+          ))}
+        </nav>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          className="md:hidden text-gray-800"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="md:hidden bg-white shadow-lg border-t border-gray-100"
+        >
+          <ul className="flex flex-col items-center py-3 space-y-2 text-gray-700 font-medium">
             {menu.map((item) => (
-              <motion.li
-                key={item.name}
-                whileHover={{ scale: 1.05 }}
-                className="relative px-3 py-1 rounded-full hover:bg-sky-400/30 transition-colors duration-200"
-              >
-                <Link href={item.href}>{item.name}</Link>
-              </motion.li>
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 rounded-lg hover:bg-sky-100 transition"
+                >
+                  {item.name}
+                </Link>
+              </li>
             ))}
           </ul>
-        </nav>
-      </div>
+        </motion.div>
+      )}
     </header>
   );
 }
