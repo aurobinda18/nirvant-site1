@@ -1,0 +1,32 @@
+so the whole team section tsx shuld have one big title like meet our team above everything
+
+and the images are squeezed up at one side why
+and how we shuld go about the image position 
+
+like we have two founder and co founder 
+
+and varius other 
+
+and at last at img section for size do point out which part to modify for resize, and what possible option are for position of card 
+
+so they 
+
+also do make sure all things are responsive in mobile or desktop, ie flexible
+
+
+
+first up all , i want only name and role shown in here , 
+
+when we hover that part it shuld highlight with some dark color that part only
+
+we have two person or three for founder and co founder category 
+
+so postion of these person be in centre
+
+and the whole card  size is small why , i want to change it, keep the sizze flexible 
+
+point me where i can change size and positon of card, and bg color, 
+with examples
+
+and ofc in mobile one person below another
+
