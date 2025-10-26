@@ -92,7 +92,7 @@ export const medicoTeam: TeamMember[] = [
 export const designTeam: TeamMember[] = [
   {
     name: "Aryasruti Barik",
-    role: "Social Media Marketing Controller",
+    role: "Chief Digital Officer and Social Media Marketing Controller",
     description: "Social Media Marketing Controller at Nirvant, creating engaging visual content and managing campaigns to amplify Nirvant’s mission across digital platforms.",
     image: "/team/arya.png",
   },
