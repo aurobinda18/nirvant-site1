@@ -11,7 +11,7 @@ export default function Header() {
 
   const menu = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
+    { name: "Services", href: "/neet" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "T&C", href: "/tnc" },
