@@ -77,7 +77,7 @@ export const whyChooseUs = {
 
 export const teamCategories = [
   { title: "Founders & Co-Founders", key: "founders" },
-  { title: "Medico Team", key: "medicoTeam" },
+  { title: "Super Mentors", key: "medicoTeam" },
   { title: "Tech Team", key: "techTeam" },
   { title: "Digital Design Team", key: "designTeam" },
 ];
