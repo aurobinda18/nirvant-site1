@@ -33,7 +33,7 @@ export const techTeam: TeamMember[] = [
   
   {
     name: "Subham Khuntia",
-    role: "Technical Associate",
+    role: "Technical Director",
     description: "Technology Consultant, ensuring smooth integration of tech tools that enhance learning and mental wellness. Skilled in building reliable and scalable solutions that support Nirvant’s mission.",
     image: "/team/subh.png",
   },
@@ -77,6 +77,16 @@ export const medicoTeam: TeamMember[] = [
     description: "Academic Controller and Manager at Nirvant, overseeing educational programs and mentoring initiatives while ensuring the highest quality support for learners.",
     image: "/team/saty.png",
   },
+
+
+  {
+    name: "Priyanshu Pahi",
+    role: "JEE Expert Controller ",
+    description: "Academic Controller and Manager at Nirvant, overseeing educational programs and mentoring initiatives while ensuring the highest quality support for learners.",
+    image: "/team/priy.png",
+  },
+
+
 ];
 
 export const designTeam: TeamMember[] = [

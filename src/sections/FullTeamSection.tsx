@@ -11,7 +11,7 @@ export default function FullTeamSection() {
       bg: "bg-gradient-to-r from-green-50 via-green-100 to-green-50",
     },
     {
-      title: "Medico Team",
+      title: "Super Mentors",
       members: teamPage.medicoTeam,
       bg: "bg-gradient-to-r from-blue-50 via-sky-50 to-blue-50",
     },
