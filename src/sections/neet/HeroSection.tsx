@@ -3,6 +3,8 @@
 import React from "react";
 import { heroData } from "@/data/neetCourse";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+
 
 export default function HeroSection() {
   return (
@@ -25,11 +27,15 @@ export default function HeroSection() {
 
         {/* Right Image */}
         <div className="lg:w-1/2 flex justify-center">
-          <img 
-            src={heroData.image} 
-            alt="NEET mentorship illustration" 
-            className="w-full max-w-md rounded-xl shadow-lg"
+                    <Image
+            src="/neet-hero.png" // path relative to /public
+            alt="NEET Hero"
+            width={1200} // desired width
+            height={600} // desired height
+            className="rounded-xl"
+            priority // optional, for LCP optimization
           />
+
         </div>
       </div>
 
