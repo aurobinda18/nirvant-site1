@@ -89,6 +89,12 @@ export const medicoTeam: TeamMember[] = [
 
 ];
 
+export const medicoTeamFiltered = medicoTeam.filter(
+  (member) => member.name !== "Priyanshu Pahi"
+);
+
+
+
 export const designTeam: TeamMember[] = [
   {
     name: "Aryasruti Barik",

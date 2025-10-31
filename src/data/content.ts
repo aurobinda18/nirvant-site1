@@ -80,6 +80,7 @@ export const teamCategories = [
   { title: "Super Mentors", key: "medicoTeam" },
   { title: "Tech Team", key: "techTeam" },
   { title: "Digital Design Team", key: "designTeam" },
+
 ];
 
 // src/data/content.ts
@@ -105,11 +106,12 @@ Every initiative is designed to combine transformative content with personalized
   `,
 };
 
-import { founders, medicoTeam, techTeam, designTeam } from "./team";
+import { founders, medicoTeam, techTeam, designTeam, medicoTeamFiltered } from "./team";
 
 export const teamPage = {
   founders,
-  medicoTeam,
+  medicoTeam: medicoTeamFiltered,
   techTeam,
   designTeam,
+  
 };
