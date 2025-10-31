@@ -34,8 +34,9 @@ export const courseBenefits: Benefit[] = [
   { id: 6, icon: Target, title: "Error Analysis & Revision", description: "Techniques to identify & fix weak areas" },
   { id: 7, icon: User, title: "Personalized Mentorship", description: "Tailored sessions for your growth" },
   { id: 8, icon: Stethoscope, title: "Live Doctors Meet", description: "Direct interactions with medical experts" },
-  { id: 9, icon: Target, title: "Weekly Assessment Growth Report", description: "Weekly assessments with performance analytics and personalized study recommendations." },
-  { id: 10, icon: User, title: "Post-NEET Counselling & Guidance", description: "One-on-one counselling for college selection, admissions, and post-NEET career planning." },
+  { id: 9, icon: Target, title: "Weekly Assessment Growth Report", description: "Weekly reports with progress tracking insights." },
+{ id: 10, icon: User, title: "Post-NEET Counselling & Guidance", description: "Expert guidance for college and career paths." },
+
 ];
 // ----------------------------
 // Pricing Plans
