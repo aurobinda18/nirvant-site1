@@ -1,13 +1,12 @@
+// ...existing code...
 "use client";
 
 import { motion } from "framer-motion";
 import TeamCard from "@/components/TeamCard";
-import { teamPage, teamCategories } from "@/data/content";
+import { teamPage } from "@/data/content";
 
 const teamDataMap: Record<string, typeof teamPage.founders> = {
-  
   medicoTeam: teamPage.medicoTeamFiltered,
- 
 };
 
 export default function TeamSection() {
@@ -42,40 +41,22 @@ export default function TeamSection() {
           Meet Our Team
         </motion.h1>
 
-        {/* Loop through categories */}
-        {teamCategories.map((cat) => (
-          <div key={cat.key} className="mb-24">
-            {/* Category Title */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-teal-700 via-blue-700 to-sky-700 bg-clip-text text-transparent mb-12 text-center drop-shadow-md"
-            >
-              {cat.title}
-            </motion.h2>
-
-            {/* Category Content - All centered with flex */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex flex-wrap justify-center gap-8"
-            >
-              {teamDataMap[cat.key]?.map((member, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={cardVariants}
-                  className="w-72"
-                >
-                  <TeamCard {...member} />
-                </motion.div>
-              ))}
+        {/* Render Super Mentors only (no category titles) */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-8"
+        >
+          {teamDataMap.medicoTeam?.map((member, idx) => (
+            <motion.div key={idx} variants={cardVariants} className="w-72">
+              <TeamCard {...member} />
             </motion.div>
-          </div>
-        ))}
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
+// ...existing code...
