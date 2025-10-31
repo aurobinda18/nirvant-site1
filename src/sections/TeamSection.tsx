@@ -36,12 +36,22 @@ export default function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-blue-600 via-sky-600 to-teal-600 bg-clip-text text-transparent mb-24 drop-shadow-lg"
+          className="text-5xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-blue-600 via-sky-600 to-teal-600 bg-clip-text text-transparent mb-12 drop-shadow-lg"
         >
           Meet Our Team
         </motion.h1>
 
-        {/* Render Super Mentors only (no category titles) */}
+        {/* Sub-title for the filtered medico team */}
+        <motion.h3
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-semibold mb-8 text-center text-teal-800"
+        >
+          Super Mentors
+        </motion.h3>
+
+        {/* Render Super Mentors only (no other category titles) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
