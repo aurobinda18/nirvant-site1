@@ -110,7 +110,8 @@ import { founders, medicoTeam, techTeam, designTeam, medicoTeamFiltered } from "
 
 export const teamPage = {
   founders,
-  medicoTeam: medicoTeamFiltered,
+  medicoTeam,
+  medicoTeamFiltered,
   techTeam,
   designTeam,
   

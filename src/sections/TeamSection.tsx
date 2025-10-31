@@ -5,10 +5,9 @@ import TeamCard from "@/components/TeamCard";
 import { teamPage, teamCategories } from "@/data/content";
 
 const teamDataMap: Record<string, typeof teamPage.founders> = {
-  founders: teamPage.founders,
-  medicoTeam: teamPage.medicoTeam,
-  techTeam: teamPage.techTeam,
-  designTeam: teamPage.designTeam,
+  
+  medicoTeam: teamPage.medicoTeamFiltered,
+ 
 };
 
 export default function TeamSection() {
