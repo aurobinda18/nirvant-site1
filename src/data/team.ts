@@ -81,7 +81,7 @@ export const medicoTeam: TeamMember[] = [
 
   {
     name: "Priyanshu Pahi",
-    role: "JEE Expert Controller ",
+    role: "Mentor",
     description: "Academic Controller and Manager at Nirvant, overseeing educational programs and mentoring initiatives while ensuring the highest quality support for learners.",
     image: "/team/priy.png",
   },
