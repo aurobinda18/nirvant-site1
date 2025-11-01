@@ -8,9 +8,9 @@ export default function NewsletterSection() {
 
   if (state.succeeded) {
     return (
-      <section className="py-20 px-6 sm:px-10 lg:px-20 bg-gradient-to-br from-sky-50 via-teal-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="rounded-3xl p-10 bg-white/70 backdrop-blur-sm border border-white/30 shadow-lg">
+      <section className="py-20 px-6 sm:px-10 lg:px-0 bg-gradient-to-br from-sky-50 via-white to-indigo-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="rounded-3xl p-10 bg-white/85 backdrop-blur-sm border border-white/30 shadow-lg">
             <h2 className="text-3xl font-extrabold text-teal-800 mb-4">
               Thanks for subscribing
             </h2>
@@ -25,9 +25,9 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-gradient-to-br from-sky-100 via-teal-50 to-indigo-100">
-      <div className="max-w-4xl mx-auto">
-        <div className="rounded-3xl p-10 bg-white/80 backdrop-blur-sm border border-white/40 shadow-lg overflow-hidden">
+    <section className="py-20 px-6 sm:px-10 lg:px-0 bg-gradient-to-br from-sky-100 via-white to-indigo-100">
+      <div className="max-w-7xl mx-auto">
+        <div className="rounded-3xl p-10 bg-white/90 backdrop-blur-sm border border-white/30 shadow-lg overflow-hidden">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-extrabold text-teal-900 mb-2">

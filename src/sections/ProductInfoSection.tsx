@@ -9,7 +9,6 @@ export default function ProductInfoSection() {
   const jumpTo = (id: string) => {
     // navigate to /neet with fragment then smooth-scroll if element present
     router.push(`/neet#${id}`);
-    // timeout allows navigation to complete (works for SPA route)
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -17,10 +16,13 @@ export default function ProductInfoSection() {
   };
 
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-gradient-to-br from-sky-50 via-teal-50 to-indigo-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="rounded-3xl p-8 md:p-12 bg-gradient-to-r from-white/60 via-white/40 to-white/30 shadow-lg backdrop-blur-sm border border-white/30 overflow-hidden flex flex-col md:flex-row gap-8 items-center">
-          {/* Decorative left: product text */}
+    <section className="py-20 px-6 sm:px-10 lg:px-0 bg-gradient-to-br from-sky-50 via-white to-teal-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="relative rounded-3xl p-10 md:p-12 bg-white/80 backdrop-blur-sm border border-white/40 shadow-lg overflow-hidden flex flex-col md:flex-row gap-8 items-center">
+          {/* soft decorative glow */}
+          <div className="pointer-events-none absolute -left-10 -top-10 w-56 h-56 bg-gradient-to-tr from-sky-200 via-teal-100 to-white opacity-40 rounded-full blur-3xl"></div>
+
+          {/* Text block */}
           <div className="flex-1">
             <h2 className="text-3xl md:text-4xl font-extrabold text-teal-900 mb-4">
               {heroData.title}
@@ -66,9 +68,9 @@ export default function ProductInfoSection() {
             </div>
           </div>
 
-          {/* Decorative right: concise product card (image removed) */}
+          {/* Compact feature card (no image) */}
           <div className="w-full md:w-96">
-            <div className="rounded-2xl p-6 bg-gradient-to-br from-sky-50 to-teal-50 border border-white/40 shadow-inner">
+            <div className="rounded-2xl p-6 bg-gradient-to-br from-sky-50 to-white border border-white/30 shadow-inner">
               <h3 className="text-lg font-semibold text-teal-800 mb-3">What this includes</h3>
               <ol className="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Personal mentorship & weekly plans</li>
