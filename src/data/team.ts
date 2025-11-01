@@ -41,7 +41,7 @@ export const techTeam: TeamMember[] = [
   {
     name: "Subham Khuntia",
     role: "Technical Director",
-    description: "ssists in developing and maintaining Nirvant’s digital platforms. Focused on optimizing performance, ensuring reliability, and supporting innovative tech-driven learning solutions.",
+    description: "Assists in developing and maintaining Nirvant’s digital platforms. Focused on optimizing performance, ensuring reliability, and supporting innovative tech-driven learning solutions.",
     image: "/team/subh.png",
   },
 
