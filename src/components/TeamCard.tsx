@@ -1,16 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import { TeamMember } from "@/data/team";
 import { motion } from "framer-motion";
+import type { TeamMember } from "@/data/team";
 
-export default function TeamCard({ name, role, image }: TeamMember) {
+type TeamCardProps = TeamMember & {
+  showTags?: boolean; // control from sections
+  maxTags?: number;   // how many tags to display
+};
+
+export default function TeamCard({
+  name,
+  role,
+  image,
+  tags,
+  showTags = false,
+  maxTags = 1,
+}: TeamCardProps) {
+  const visibleTags = (tags ?? []).slice(0, maxTags);
+
   return (
     <motion.div
       whileHover={{ y: -5, scale: 1.03 }}
       className="flex flex-col items-center bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 w-72"
     >
-      {/* Image container */}
+      {/* Image */}
       <div className="w-64 h-80 bg-gradient-to-br from-sky-50 to-indigo-100 rounded-lg overflow-hidden mb-2">
         <Image
           src={image}
@@ -22,12 +36,28 @@ export default function TeamCard({ name, role, image }: TeamMember) {
         />
       </div>
 
-      {/* Text container */}
-      <motion.div
-        className="px-4 py-2 w-full text-center rounded-b-2xl transition-colors cursor-pointer hover:bg-sky-400"
-      >
+      {/* Name, role, optional tags */}
+      <motion.div className="px-4 py-2 w-full text-center rounded-b-2xl transition-colors">
         <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
         <p className="text-sm text-gray-700">{role}</p>
+
+        {showTags && visibleTags.length > 0 && (
+          <div className="mt-2 flex flex-wrap justify-center gap-2">
+            {visibleTags.map((t, i) => (
+              <span
+                key={i}
+                className="text-xs px-2 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200"
+              >
+                {t}
+              </span>
+            ))}
+            {tags && tags.length > maxTags && (
+              <span className="text-xs px-2 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+                +{tags.length - maxTags}
+              </span>
+            )}
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );

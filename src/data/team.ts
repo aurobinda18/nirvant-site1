@@ -3,6 +3,7 @@ export interface TeamMember {
   role: string;
   description: string;
   image: string;
+  tags?: string[]; // optional tags, e.g., ["AIIMS Bhubaneswar"]
 }
 
 export const founders: TeamMember[] = [
@@ -50,41 +51,46 @@ export const techTeam: TeamMember[] = [
 export const medicoTeam: TeamMember[] = [
   
 
-
-  {
-    name: "Sandipta Sahoo",
-    role: "Medico",
-    description: "Mental Therapist providing personalized mental health guidance to students and professionals, helping them navigate stress, anxiety, and performance pressure effectively.",
-    image: "/team/sand.png",
-  },
-  {
-    name: "Prachurya Das",
-    role: "Medico",
-    description: "Educational Mentor specializing in guiding students through medical exam preparation with emotional and psychological support, ensuring holistic growth and resilience.",
-    image: "/team/prac.png",
-  },
-
-    {
-    name: "Smaranika Priyadarshini",
-    role: "Medico",
-    description: "Educational Mentor focused on holistic student development, combining mental wellness techniques with structured academic support for optimal performance.",
-    image: "/team/smar.png",
-  },
-
-  {
-    name: "Jeeban Nayak",
-    role: "Medico",
-    description: "Educational Mentor dedicated to empowering students with clear strategies for learning and exam success while nurturing their emotional well-being.",
-    image: "/team/jeeb.png",
-  },
-  
-  {
-    name: "Satyabrata Mahakud",
-    role: "Academic Expert Controller ",
-    description: "Academic Controller and Manager at Nirvant, overseeing educational programs and mentoring initiatives while ensuring the highest quality support for learners.",
-    image: "/team/saty.png",
-  },
-
+{
+  name: "Sandipta Sahoo",
+  role: "Medico",
+  description:
+    "Secured NEET Rank 561 with 662 marks and now pursuing MBBS at VIMSAR. Passionate about simplifying complex medical concepts and motivating aspirants to approach learning with clarity and confidence.",
+  image: "/team/sand.png",
+  tags: ["VIMSAR"],
+},
+{
+  name: "Prachurya Das",
+  role: "Medico",
+  description:
+    "Achieved NEET Rank 6181 with 682 marks and studies at SCB Medical College & Hospital. A mentor who believes in consistent effort, self-belief, and helping students prepare smarter — not harder — for their goals.",
+  image: "/team/prac.png",
+  tags: ["SCB Medical College & Hospital"],
+},
+{
+  name: "Smaranika Priyadarshini",
+  role: "Medico",
+  description:
+    "Scored 628 marks in NEET with Rank 14666, now part of VIMSAR. Dedicated to guiding students beyond rote learning, blending emotional balance with disciplined study strategies to bring out their best potential.",
+  image: "/team/smar.png",
+  tags: ["VEER SURENDRA SAI INSTITUTE OF MEDICAL SCIENCE AND RESEARCH"],
+},
+{
+  name: "Jeeban Nayak",
+  role: "Medico",
+  description:
+    "Secured NEET AIR 9382 with 675 marks and continues his medical journey at MKCG Medical College & Hospital. Committed to mentoring aspirants through structured preparation, focus, and self-motivation.",
+  image: "/team/jeeb.png",
+  tags: ["MKCG Medical College & Hospital"],
+},
+{
+  name: "Satyabrata Mahakud",
+  role: "Academic Expert Controller",
+  description:
+    "Academic Controller at Nirvant, managing educational programs and mentorship frameworks. Focused on integrating academic excellence with mental wellness to create a transformative learning ecosystem.",
+  image: "/team/saty.png",
+  tags: ["Nirvant Team"],
+},
 
   {
     name: "Priyanshu Pahi",
