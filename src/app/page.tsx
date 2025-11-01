@@ -6,6 +6,7 @@ import WhatWeOfferSection from "@/sections/WhatWeOfferSection";
 import WhyChooseUsSection from "@/sections/WhyChooseUsSection";
 import ProductInfoSection from "@/sections/ProductInfoSection";
 import TeamSection from "@/sections/TeamSection";
+import NewsletterSection from "@/sections/NewsletterSection";
 
 
 export default function Home() {
@@ -15,9 +16,9 @@ export default function Home() {
       <MissionSection />
       <WhatWeOfferSection />
       <WhyChooseUsSection />
-      <ProductInfoSection />
       <TeamSection />
-      
+        <ProductInfoSection />
+        <NewsletterSection />
     </>
   );
 }
