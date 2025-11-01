@@ -4,11 +4,10 @@ import { hero } from "@/data/content";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-6 md:px-16 bg-gradient-to-br from-sky-300 via-blue-200 to-teal-200">
-      
-      {/* Floating glow layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.7),transparent_60%)] blur-3xl"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,112,243,0.25),transparent_60%)] blur-3xl"></div>
+    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-6 md:px-16 bg-warm-gradient">
+      {/* Soft warm glows */}
+      <div className="glow-warm-1"></div>
+      <div className="glow-warm-2"></div>
 
       {/* Headline */}
       <motion.h1

@@ -20,11 +20,10 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="py-28 px-6 bg-gradient-to-br from-sky-300 via-blue-200 to-teal-400 relative overflow-hidden">
-      {/* Soft background elements */}
+    <section className="py-28 px-6 bg-warm-gradient relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-sky-300 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-teal-300 rounded-full blur-3xl"></div>
+        <div className="glow-warm-1"></div>
+        <div className="glow-warm-2"></div>
       </div>
 
       {/* Content container */}

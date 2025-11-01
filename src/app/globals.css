@@ -26,3 +26,5 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@import "../styles/theme.css";

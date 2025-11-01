@@ -1,0 +1,35 @@
+@tailwind utilities;
+
+@layer utilities {
+  /* Section backgrounds */
+  .bg-warm-gradient {
+    @apply bg-gradient-to-br from-brand-yellow-100 via-brand-orange-100 to-brand-red-100;
+  }
+  .bg-warm-subtle {
+    @apply bg-gradient-to-br from-brand-yellow-50 via-white to-brand-orange-50;
+  }
+  .bg-warm-subtle-2 {
+    @apply bg-gradient-to-br from-brand-yellow-50 via-white to-brand-red-50;
+  }
+
+  /* Headings */
+  .text-warm-heading {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-brand-orange-800 via-brand-orange-700 to-brand-red-700;
+  }
+
+  /* Buttons */
+  .btn-primary-warm {
+    @apply inline-block rounded-full px-6 py-3 font-semibold text-white bg-gradient-to-r from-brand-green-600 to-brand-green-500 shadow hover:shadow-lg transition;
+  }
+  .btn-outline-warm {
+    @apply inline-block rounded-full px-5 py-3 font-medium border-2 border-brand-orange-600 text-brand-orange-700 hover:bg-brand-orange-50 transition;
+  }
+
+  /* Soft glow blobs */
+  .glow-warm-1 {
+    @apply pointer-events-none absolute -left-10 -top-10 w-56 h-56 bg-brand-yellow-300/40 rounded-full blur-3xl;
+  }
+  .glow-warm-2 {
+    @apply pointer-events-none absolute -bottom-10 -right-10 w-80 h-80 bg-brand-orange-300/40 rounded-full blur-3xl;
+  }
+}
