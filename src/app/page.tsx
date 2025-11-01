@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/components/Footer";
+
 import HeroSection from "@/sections/HeroSection";
 import MissionSection from "@/sections/MissionSection";
 import WhatWeOfferSection from "@/sections/WhatWeOfferSection";
@@ -19,7 +19,7 @@ export default function Home() {
       <TeamSection />
         <ProductInfoSection />
         <NewsletterSection />
-          <Footer />
+          
     </>
   );
 }
