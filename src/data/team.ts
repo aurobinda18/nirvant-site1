@@ -32,12 +32,19 @@ export const techTeam: TeamMember[] = [
   
   
   {
-    name: "Subham Khuntia",
+    name: "Jeebanjyoti Biswal",
     role: "Technical Director",
     description: "Technology Consultant, ensuring smooth integration of tech tools that enhance learning and mental wellness. Skilled in building reliable and scalable solutions that support Nirvant’s mission.",
-    image: "/team/subh.png",
+    image: "/team/jeeba.png",
   },
   
+  {
+    name: "Subham Khuntia",
+    role: "Technical Director",
+    description: "ssists in developing and maintaining Nirvant’s digital platforms. Focused on optimizing performance, ensuring reliability, and supporting innovative tech-driven learning solutions.",
+    image: "/team/subh.png",
+  },
+
 ];
 
 export const medicoTeam: TeamMember[] = [
