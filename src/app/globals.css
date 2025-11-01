@@ -1,4 +1,4 @@
-/* Tailwind directives */
+@import "../styles/theme.css";/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,4 +27,3 @@ html {
   scroll-behavior: smooth;
 }
 
-@import "../styles/theme.css";
