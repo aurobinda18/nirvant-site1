@@ -4,14 +4,14 @@ import { hero } from "@/data/content";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-6 md:px-16 bg-warm-gradient">
-      {/* Soft warm glows */}
-      <div className="glow-warm-1"></div>
-      <div className="glow-warm-2"></div>
+    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-6 md:px-16 bg-primary-gradient">
+      {/* Soft primary glows */}
+      <div className="glow-primary-1"></div>
+      <div className="glow-primary-2"></div>
 
       {/* Headline */}
       <motion.h1
-        className="relative text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-900 via-sky-700 to-teal-700 drop-shadow-lg mb-6"
+        className="relative text-5xl md:text-7xl font-extrabold tracking-tight text-primary-heading drop-shadow-lg mb-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}

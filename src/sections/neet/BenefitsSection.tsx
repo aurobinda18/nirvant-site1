@@ -7,7 +7,7 @@ import BenefitCard from "@/components/neet/BenefitCard";
 
 export default function BenefitsSection() {
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-green-50">
+    <section id="benefits" className="py-20 px-6 sm:px-10 lg:px-20 bg-green-50">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-blue-900 text-center mb-12">
           What You’ll Get

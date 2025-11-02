@@ -20,10 +20,10 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="py-28 px-6 bg-warm-gradient relative overflow-hidden">
+    <section className="py-28 px-6 bg-primary-gradient relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
-        <div className="glow-warm-1"></div>
-        <div className="glow-warm-2"></div>
+        <div className="glow-primary-1"></div>
+        <div className="glow-primary-2"></div>
       </div>
 
       {/* Content container */}
