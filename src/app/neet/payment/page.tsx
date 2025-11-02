@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useId, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useId, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { paymentData, pricePlans } from "@/data/neetCourse";
@@ -8,7 +8,7 @@ import { paymentData, pricePlans } from "@/data/neetCourse";
 const formatINR = (value: number) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value);
 
-export default function PaymentPage() {
+function PaymentPageInner() {
   const search = useSearchParams();
   const router = useRouter();
   const idPrefix = useId();
@@ -219,5 +219,13 @@ export default function PaymentPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100" />}> 
+      <PaymentPageInner />
+    </Suspense>
   );
 }
