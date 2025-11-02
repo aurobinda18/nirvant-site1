@@ -20,7 +20,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="py-28 px-6 bg-primary-gradient relative overflow-hidden">
+    <section className="py-28 px-6 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100 relative overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="glow-primary-1"></div>
         <div className="glow-primary-2"></div>
@@ -33,7 +33,7 @@ export default function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-extrabold text-center bg-gradient-to-r from-blue-600 via-sky-600 to-teal-600 bg-clip-text text-transparent mb-12 drop-shadow-lg"
+          className="text-5xl md:text-7xl font-extrabold text-center text-gray-900 mb-12 drop-shadow-sm"
         >
           Meet Our Team
         </motion.h1>
@@ -43,7 +43,7 @@ export default function TeamSection() {
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-semibold mb-8 text-center text-teal-800"
+          className="text-3xl md:text-4xl font-semibold mb-8 text-center text-gray-800"
         >
           Super Mentors
         </motion.h3>

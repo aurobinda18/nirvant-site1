@@ -13,9 +13,9 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-20 px-6 sm:px-10 lg:px-20 bg-white">
+  <section className="py-20 px-6 sm:px-10 lg:px-20 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-blue-900 text-center mb-12">
+  <h2 className="text-3xl sm:text-4xl font-playfair font-bold text-gray-900 text-center mb-12">
           Frequently Asked Questions
         </h2>
 
@@ -26,11 +26,11 @@ export default function FAQSection() {
                 onClick={() => toggle(item.id)}
                 className="w-full flex justify-between items-center px-6 py-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100 transition"
               >
-                <span className="text-lg font-semibold text-blue-900">{item.question}</span>
+                <span className="text-lg font-semibold text-gray-900">{item.question}</span>
                 {openId === item.id ? (
-                  <ChevronUp className="w-5 h-5 text-blue-600" />
+                  <ChevronUp className="w-5 h-5 text-orange-600" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-blue-600" />
+                  <ChevronDown className="w-5 h-5 text-orange-600" />
                 )}
               </button>
 

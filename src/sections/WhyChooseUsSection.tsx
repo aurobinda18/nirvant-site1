@@ -21,7 +21,7 @@ export default function WhyChooseUsSection() {
   };
 
   return (
-    <section className="relative py-28 px-6 bg-gradient-to-br from-teal-100 via-teal-200 to-indigo-200 overflow-hidden">
+  <section className="relative py-28 px-6 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100 overflow-hidden">
       {/* Background radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.5),transparent_70%)]"></div>
 
@@ -30,7 +30,7 @@ export default function WhyChooseUsSection() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative text-4xl md:text-5xl font-extrabold text-teal-900 text-center mb-16 drop-shadow-lg"
+  className="relative text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-16 drop-shadow-sm"
       >
         {whyChooseUs.title}
       </motion.h2>
@@ -47,11 +47,11 @@ export default function WhyChooseUsSection() {
           <motion.div
             key={item.title}
             variants={cardVariants}
-            className="bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:rotate-1 hover:-translate-y-2 border border-teal-300 hover:border-indigo-400"
+            className="bg-white/70 backdrop-blur-xl p-8 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:rotate-1 hover:-translate-y-2 border border-orange-200 hover:border-amber-300"
           >
-            <div className="text-6xl mb-4 text-teal-600 drop-shadow-md">{item.icon}</div>
-            <h3 className="text-2xl font-semibold text-teal-900 mb-3">{item.title}</h3>
-            <p className="text-teal-800 leading-relaxed">{item.description}</p>
+            <div className="text-6xl mb-4 text-orange-600 drop-shadow-sm">{item.icon}</div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+            <p className="text-gray-800 leading-relaxed">{item.description}</p>
           </motion.div>
         ))}
       </motion.div>
