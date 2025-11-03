@@ -9,10 +9,11 @@ import TeamSection from "@/sections/TeamSection";
 import NewsletterSection from "@/sections/NewsletterSection";
 
 
+
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <HeroSection/>
       <MissionSection />
       <WhatWeOfferSection />
       <WhyChooseUsSection />

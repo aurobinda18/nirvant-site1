@@ -43,14 +43,14 @@ export default function Footer() {
             <ul className="space-y-3 text-slate-300">
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-teal-300" />
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-white transition-colors">
-                  +91 XXXXX XXXXX
+                <a href="tel:+917735932023" className="hover:text-white transition-colors">
+                  +91 77359 32023
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-teal-300" />
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-white transition-colors">
-                  +91 XXXXX XXXXX
+                <a href="tel:+916371214085" className="hover:text-white transition-colors">
+                  +91 63712 14085
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -67,7 +67,7 @@ export default function Footer() {
             <h3 className="text-white text-xl font-semibold mb-4">Stay Connected</h3>
             <div className="flex items-center gap-4">
               <a
-                href="https://www.youtube.com"
+                href="https://www.youtube.com/channel/UCFl6eKOz4X7n_Nn3WhMIetA"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
@@ -76,7 +76,7 @@ export default function Footer() {
                 <Youtube size={20} />
               </a>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/nirvant-wellness/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -85,7 +85,7 @@ export default function Footer() {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://wa.me/91XXXXXXXXXX"
+                href="https://wa.me/917735932023"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

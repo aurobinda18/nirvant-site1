@@ -57,7 +57,8 @@ export const medicoTeam: TeamMember[] = [
   description:
     "Secured NEET Rank 561 with 662 marks and now pursuing MBBS at VIMSAR. Passionate about simplifying complex medical concepts and motivating aspirants to approach learning with clarity and confidence.",
   image: "/team/sand.png",
-  tags: ["VIMSAR"],
+  tags: ["VEER SURENDRA SAI INSTITUTE OF MEDICAL SCIENCE AND RESEARCH
+    "],
 },
 {
   name: "Prachurya Das",
@@ -113,6 +114,16 @@ export const designTeam: TeamMember[] = [
     name: "Aryasruti Barik",
     role: "Chief Digital Officer and Social Media Marketing Controller",
     description: "Social Media Marketing Controller at Nirvant, creating engaging visual content and managing campaigns to amplify Nirvant’s mission across digital platforms.",
-    image: "/team/arya.png",
+    image: "/team/ar.png",
   },
+
+  {
+  name: "Shikha Naik",
+  role: "Digital Media Strategist",
+  description: "Supporting Nirvant’s digital vision alongside Aryasruti, Shikha focuses on content strategy, campaign analytics, and optimizing audience engagement across platforms.",
+  image: "/team/shik.png",
+}
+
+
+
 ];
