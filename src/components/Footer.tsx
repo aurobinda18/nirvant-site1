@@ -13,22 +13,22 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800" />
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100" />
       {/* Soft glows */}
-      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -right-24 w-[28rem] h-[28rem] bg-sky-500/10 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 bg-yellow-300/25 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 w-[28rem] h-[28rem] bg-orange-300/25 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-0 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Useful Links */}
           <div>
-            <h3 className="text-white text-xl font-semibold mb-4">Navigate Nirvant</h3>
+            <h3 className="text-gray-900 text-xl font-semibold mb-4">Navigate Nirvant</h3>
             <ul className="space-y-2">
               {links.map((l) => (
                 <li key={l.name}>
                   <Link
                     href={l.href}
-                    className="text-slate-300 hover:text-white transition-colors"
+                    className="text-gray-700 hover:text-gray-900 transition-colors"
                   >
                     {l.name}
                   </Link>
@@ -39,23 +39,23 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white text-xl font-semibold mb-4">Connect With Us</h3>
-            <ul className="space-y-3 text-slate-300">
+            <h3 className="text-gray-900 text-xl font-semibold mb-4">Connect With Us</h3>
+            <ul className="space-y-3 text-gray-700">
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-teal-300" />
-                <a href="tel:+917735932023" className="hover:text-white transition-colors">
+                <Phone size={18} className="text-orange-600" />
+                <a href="tel:+917735932023" className="hover:text-gray-900 transition-colors">
                   +91 77359 32023
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={18} className="text-teal-300" />
-                <a href="tel:+916371214085" className="hover:text-white transition-colors">
+                <Phone size={18} className="text-orange-600" />
+                <a href="tel:+916371214085" className="hover:text-gray-900 transition-colors">
                   +91 63712 14085
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={18} className="text-teal-300" />
-                <a href="mailto:hello@nirvant.in" className="hover:text-white transition-colors">
+                <Mail size={18} className="text-orange-600" />
+                <a href="mailto:hello@nirvant.in" className="hover:text-gray-900 transition-colors">
                   hello@nirvant.in
                 </a>
               </li>
@@ -64,14 +64,14 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-white text-xl font-semibold mb-4">Stay Connected</h3>
+            <h3 className="text-gray-900 text-xl font-semibold mb-4">Stay Connected</h3>
             <div className="flex items-center gap-4">
               <a
                 href="https://www.youtube.com/channel/UCFl6eKOz4X7n_Nn3WhMIetA"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="p-2 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:text-white transition"
+                className="p-2 rounded-full bg-white text-orange-700 border border-orange-200 hover:bg-orange-50 hover:text-orange-800 transition"
               >
                 <Youtube size={20} />
               </a>
@@ -80,7 +80,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="p-2 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:text-white transition"
+                className="p-2 rounded-full bg-white text-orange-700 border border-orange-200 hover:bg-orange-50 hover:text-orange-800 transition"
               >
                 <Linkedin size={20} />
               </a>
@@ -89,25 +89,25 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="p-2 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:text-white transition"
+                className="p-2 rounded-full bg-white text-orange-700 border border-orange-200 hover:bg-orange-50 hover:text-orange-800 transition"
               >
                 <MessageCircle size={20} />
               </a>
             </div>
 
-            <p className="text-slate-400 text-sm mt-6 leading-relaxed">
+            <p className="text-gray-600 text-sm mt-6 leading-relaxed">
               Modern, calm, and confident guidance for students and professionals.
             </p>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="mt-12 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-slate-400 text-sm">
+        <div className="mt-12 border-t border-orange-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-gray-600 text-sm">
             © {new Date().getFullYear()} Nirvant. All rights reserved.
           </p>
-          <div className="text-slate-400 text-sm">
-            Built with care — wellness · education · tech
+          <div className="text-gray-600 text-sm">
+            Built with care — education · wellness · tech
           </div>
         </div>
       </div>

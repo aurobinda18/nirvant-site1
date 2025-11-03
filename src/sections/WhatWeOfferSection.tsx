@@ -14,7 +14,7 @@ export default function WhatWeOfferSection() {
   };
 
   return (
-  <section className="relative py-28 px-6 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100 overflow-hidden">
+  <section id="what-we-offer" className="relative py-28 px-6 bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.6),transparent_70%)]"></div>
 
       <motion.h2

@@ -25,7 +25,7 @@ export default function TeamCard({
       className="flex flex-col items-center bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-2 w-72"
     >
       {/* Image */}
-      <div className="w-64 h-80 bg-gradient-to-br from-sky-50 to-indigo-100 rounded-lg overflow-hidden mb-2">
+      <div className="w-64 h-80 bg-gradient-to-br from-amber-50 to-orange-100 rounded-lg overflow-hidden mb-2">
         <Image
           src={image}
           alt={name}
@@ -46,13 +46,13 @@ export default function TeamCard({
             {visibleTags.map((t, i) => (
               <span
                 key={i}
-                className="text-xs px-2 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200"
+                className="text-xs px-2 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200"
               >
                 {t}
               </span>
             ))}
             {tags && tags.length > maxTags && (
-              <span className="text-xs px-2 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-200">
+              <span className="text-xs px-2 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
                 +{tags.length - maxTags}
               </span>
             )}

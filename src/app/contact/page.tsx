@@ -43,9 +43,9 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 min-h-screen">
+    <section className="py-24 px-6 bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-100 min-h-screen">
       <div className="max-w-4xl mx-auto relative z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-teal-800 mb-12 drop-shadow-md">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-12 drop-shadow-md">
           Get in Touch
         </h2>
 
@@ -58,8 +58,8 @@ export default function ContactPage() {
           className="bg-white rounded-3xl shadow-xl p-8 md:p-12 flex flex-col gap-6 relative"
         >
           {/* Decorative background shapes */}
-          <div className="absolute -top-16 -left-16 w-40 h-40 rounded-full bg-teal-200 opacity-30 blur-3xl"></div>
-          <div className="absolute -bottom-16 -right-16 w-52 h-52 rounded-full bg-green-200 opacity-30 blur-3xl"></div>
+          <div className="absolute -top-16 -left-16 w-40 h-40 rounded-full bg-amber-200 opacity-30 blur-3xl"></div>
+          <div className="absolute -bottom-16 -right-16 w-52 h-52 rounded-full bg-orange-200 opacity-30 blur-3xl"></div>
 
           <input
             type="text"
@@ -68,7 +68,7 @@ export default function ContactPage() {
             required
             value={form.name}
             onChange={handleChange}
-            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition"
+            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition"
           />
           <input
             type="email"
@@ -77,7 +77,7 @@ export default function ContactPage() {
             required
             value={form.email}
             onChange={handleChange}
-            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition"
+            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition"
           />
           <input
             type="tel"
@@ -86,7 +86,7 @@ export default function ContactPage() {
             required
             value={form.phone}
             onChange={handleChange}
-            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition"
+            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition"
           />
           <textarea
             name="message"
@@ -94,19 +94,19 @@ export default function ContactPage() {
             rows={5}
             value={form.message}
             onChange={handleChange}
-            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-400 transition resize-none"
+            className="border border-gray-300 p-4 rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition resize-none"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg"
+            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-1"
           >
             {loading ? "Sending..." : "Send Message"}
           </button>
 
           {success && (
-            <p className="text-center text-green-600 font-medium mt-4">{success}</p>
+            <p className="text-center text-orange-700 font-medium mt-4">{success}</p>
           )}
         </form>
       </div>

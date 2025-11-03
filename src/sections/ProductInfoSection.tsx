@@ -3,14 +3,13 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { heroData } from "@/data/neetCourse";
-import { pricePlans, paymentData } from "@/data/neetCourse";
+import { pricePlans } from "@/data/neetCourse";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import EnrollmentModal from "@/components/enroll/EnrollmentModal";
 
 export default function ProductInfoSection() {
   const router = useRouter();
-  const [openEnroll, setOpenEnroll] = useState(false);
+  
 
   const jumpTo = (id: string) => {
     router.push(`/neet#${id}`);
@@ -93,10 +92,8 @@ export default function ProductInfoSection() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setOpenEnroll(true)}
+                onClick={() => jumpTo("pricing")}
                 className="btn-success"
-                aria-haspopup="dialog"
-                aria-expanded={openEnroll}
               >
                 Enroll Now
               </motion.button>
@@ -130,14 +127,6 @@ export default function ProductInfoSection() {
           </motion.div>
         </motion.div>
       </div>
-      {/* Enrollment Modal */}
-      <EnrollmentModal
-        open={openEnroll}
-        onClose={() => setOpenEnroll(false)}
-        priceInINR={pricePlans[5]?.currentPrice ?? 3500}
-        upiId={paymentData.upiId}
-        qrSrc={paymentData.qrImage}
-      />
     </motion.section>
   );
 }

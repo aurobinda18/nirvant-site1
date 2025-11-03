@@ -1,8 +1,8 @@
 export const hero = {
-  tagline: "Clarity begins with understanding yourself.",
+  tagline: "Empowering Mind, Career and Identity.",
   subtext:
     "Nirvant is where clarity meets growth. We help students, professionals, and leaders find balance between mind, purpose, and performance.",
-  cta: "Book an Appointment",
+  cta: "Enroll Now",
 };
 
 export const mission = {

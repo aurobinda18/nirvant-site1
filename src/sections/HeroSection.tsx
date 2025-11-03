@@ -1,10 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { hero } from "@/data/content";
 
 // Variant 2: Responsive split (text left, image right)
 export default function HeroSection2() {
+  const router = useRouter();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-yellow-50 via-yellow-100 to-orange-100 px-6 md:px-16 py-20 md:py-28">
       {/* Warm overlay */}
@@ -37,10 +39,19 @@ export default function HeroSection2() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, delay: 0.6 }}
           >
-            <button className="px-8 py-4 bg-orange-600 text-white text-lg font-semibold rounded-full shadow-md hover:bg-orange-700 hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200">
+            <button
+              onClick={() => router.push("/neet#benefits")}
+              className="px-8 py-4 bg-orange-600 text-white text-lg font-semibold rounded-full shadow-md hover:bg-orange-700 hover:shadow-xl hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            >
               {hero.cta}
             </button>
-            <button className="px-8 py-4 bg-white text-orange-700 border border-orange-300 text-lg font-semibold rounded-full hover:bg-orange-50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-100">
+            <button
+              onClick={() => {
+                const el = document.getElementById("what-we-offer");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="px-8 py-4 bg-white text-orange-700 border border-orange-300 text-lg font-semibold rounded-full hover:bg-orange-50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-100"
+            >
               Explore Nirvant
             </button>
           </motion.div>

@@ -5,10 +5,10 @@ import FullTeamSection from "@/sections/FullTeamSection";
 
 export default function AboutPage() {
   return (
-    <main className="bg-gradient-to-b from-green-50 via-sky-50 to-indigo-50">
+    <main className="bg-gradient-to-b from-yellow-50 via-amber-50 to-orange-100">
       {/* Hero Section */}
       <section className="py-24 px-6 text-center max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-teal-900 mb-6">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6">
           About Nirvant
         </h1>
         <p className="text-lg md:text-xl text-gray-800 leading-relaxed">
@@ -19,7 +19,7 @@ export default function AboutPage() {
       {/* Philosophy / Mission Section */}
       <section className="py-24 px-6 max-w-5xl mx-auto">
         <div className="bg-white rounded-3xl p-10 shadow-md hover:shadow-lg transition">
-          <h2 className="text-4xl font-bold mb-8 text-teal-900 text-center">
+          <h2 className="text-4xl font-bold mb-8 text-gray-900 text-center">
             Our Mission & Vision
           </h2>
           <p className="text-gray-800 text-justify leading-relaxed mb-6">
