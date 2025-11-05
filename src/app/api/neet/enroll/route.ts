@@ -22,8 +22,11 @@ export async function POST(req: Request) {
     const data = (await req.json()) as Payload;
     const now = new Date().toISOString();
 
+    const webCrypto = (globalThis as { crypto?: { randomUUID?: () => string } }).crypto;
+    const makeId = () => webCrypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+
     const record = {
-      id: (globalThis as any).crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      id: makeId(),
       ts: now,
       ip:
         (req.headers.get("x-forwarded-for") || "")

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { heroData } from "@/data/neetCourse";
 import { pricePlans } from "@/data/neetCourse";
 import { motion } from "framer-motion";

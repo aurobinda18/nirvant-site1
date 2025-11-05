@@ -71,7 +71,6 @@ function PaymentPageInner() {
       if (data.utr) setUtr(data.utr);
       if (data.step) setStep(data.step);
     } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Save when fields change (debounced)
