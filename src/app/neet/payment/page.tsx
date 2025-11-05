@@ -332,7 +332,7 @@ function PaymentPageInner() {
                 {!isFreeTrial ? (
                   <>
                     <h3 className="text-xl font-semibold text-gray-900">Enter your UTR to confirm</h3>
-                    <p className="text-gray-700 text-sm">We verify manually within a few hours. You’ll get an email confirmation.</p>
+                    <p className="text-gray-700 text-sm">We verify manually within a few hours. You&rsquo;ll get an email confirmation.</p>
                     <div>
                       <label htmlFor={`${idPrefix}-utr`} className="block text-sm font-medium text-gray-700">UTR / reference code</label>
                       <input id={`${idPrefix}-utr`} value={utr} onChange={(e)=>setUtr(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-orange-300" placeholder="e.g., 1234ABCD" />
@@ -346,8 +346,8 @@ function PaymentPageInner() {
                   </>
                 ) : (
                   <>
-                    <h3 className="text-xl font-semibold text-gray-900">You're in! 🎉</h3>
-                    <p className="text-gray-700 text-sm">Your 3-day Free Trial is active. We’ll email you onboarding details shortly.</p>
+                    <h3 className="text-xl font-semibold text-gray-900">You&apos;re in! 🎉</h3>
+                    <p className="text-gray-700 text-sm">Your 3-day Free Trial is active. We&rsquo;ll email you onboarding details shortly.</p>
                     <div className="rounded-xl p-4 bg-amber-50 border border-amber-200 text-amber-800">
                       Enjoy the trial period to explore mentorship, plans, and support.
                     </div>
