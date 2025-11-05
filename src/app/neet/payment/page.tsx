@@ -21,6 +21,7 @@ function PaymentPageInner() {
     const fromQuery = priceParam ? parseInt(priceParam, 10) : undefined;
     return Number.isFinite(fromQuery as number) ? (fromQuery as number) : byDuration ?? 3500;
   }, [duration, priceParam]);
+  const isFreeTrial = inferredPrice === 0;
 
   const upiId = paymentData.upiId;
   const qrSrc = paymentData.qrImage;
@@ -110,6 +111,7 @@ function PaymentPageInner() {
           action: "checkout",
           duration,
           price: inferredPrice,
+          freeTrial: isFreeTrial,
           firstName,
           lastName,
           academicStatus,
@@ -120,6 +122,33 @@ function PaymentPageInner() {
           ts: new Date().toISOString(),
         }),
       }).catch(() => {});
+      // If it's a free trial, skip payment and go straight to confirmation
+      if (isFreeTrial) {
+        setConfirmMessage(
+          "Free trial activated! You're enrolled for 3 days. We'll email you details and next steps shortly."
+        );
+        // Send a confirm event without UTR
+        void fetch("/api/neet/enroll", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "confirm",
+            duration,
+            price: inferredPrice,
+            freeTrial: true,
+            firstName,
+            lastName,
+            academicStatus,
+            address,
+            email,
+            phone,
+            step: 3 as const,
+            ts: new Date().toISOString(),
+          }),
+        }).catch(() => {});
+        setStep(3);
+        return;
+      }
     }
     setStep((s) => (s === 1 ? 2 : 3));
   };
@@ -144,6 +173,7 @@ function PaymentPageInner() {
           action: "confirm",
           duration,
           price: inferredPrice,
+          freeTrial: false,
           firstName,
           lastName,
           academicStatus,
@@ -160,6 +190,23 @@ function PaymentPageInner() {
       "We’ll verify the UTR and email you within 24 hours. Save this page or your order ID for reference."
     );
     setSubmitting(false);
+  };
+
+  const handleClear = () => {
+    setFirstName("");
+    setLastName("");
+    setAcademicStatus("");
+    setAddress("");
+    setEmail("");
+    setPhone("");
+    setUtr("");
+    setErrors({});
+    setConfirmMessage(null);
+    setConfirmError(null);
+    setStep(1);
+    try {
+      if (typeof window !== "undefined") localStorage.removeItem(STORAGE_KEY);
+    } catch {}
   };
 
   return (
@@ -256,7 +303,7 @@ function PaymentPageInner() {
               </div>
             )}
 
-            {step === 2 && (
+            {step === 2 && !isFreeTrial && (
               <div className="space-y-5">
                 <h3 className="text-xl font-semibold text-gray-900">Pay via UPI</h3>
                 <p className="text-gray-700">Scan the QR or pay to <strong className="text-gray-900">{upiId}</strong>. Then enter your UTR on the next step.</p>
@@ -282,17 +329,29 @@ function PaymentPageInner() {
 
             {step === 3 && (
               <div className="space-y-5">
-                <h3 className="text-xl font-semibold text-gray-900">Enter your UTR to confirm</h3>
-                <p className="text-gray-700 text-sm">We verify manually within a few hours. You’ll get an email confirmation.</p>
-                <div>
-                  <label htmlFor={`${idPrefix}-utr`} className="block text-sm font-medium text-gray-700">UTR / reference code</label>
-                  <input id={`${idPrefix}-utr`} value={utr} onChange={(e)=>setUtr(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-orange-300" placeholder="e.g., 1234ABCD" />
-                </div>
-                {confirmError && <div className="text-sm text-red-600">{confirmError}</div>}
-                {confirmMessage && (
-                  <div className="rounded-xl p-4 bg-green-50 border border-green-200 text-green-800">
-                    {confirmMessage}
-                  </div>
+                {!isFreeTrial ? (
+                  <>
+                    <h3 className="text-xl font-semibold text-gray-900">Enter your UTR to confirm</h3>
+                    <p className="text-gray-700 text-sm">We verify manually within a few hours. You’ll get an email confirmation.</p>
+                    <div>
+                      <label htmlFor={`${idPrefix}-utr`} className="block text-sm font-medium text-gray-700">UTR / reference code</label>
+                      <input id={`${idPrefix}-utr`} value={utr} onChange={(e)=>setUtr(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-orange-300" placeholder="e.g., 1234ABCD" />
+                    </div>
+                    {confirmError && <div className="text-sm text-red-600">{confirmError}</div>}
+                    {confirmMessage && (
+                      <div className="rounded-xl p-4 bg-green-50 border border-green-200 text-green-800">
+                        {confirmMessage}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-xl font-semibold text-gray-900">You're in! 🎉</h3>
+                    <p className="text-gray-700 text-sm">Your 3-day Free Trial is active. We’ll email you onboarding details shortly.</p>
+                    <div className="rounded-xl p-4 bg-amber-50 border border-amber-200 text-amber-800">
+                      Enjoy the trial period to explore mentorship, plans, and support.
+                    </div>
+                  </>
                 )}
               </div>
             )}
@@ -300,17 +359,39 @@ function PaymentPageInner() {
 
           {/* Footer */}
           <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-            <div className="text-xs text-gray-500">By continuing you agree to our terms & refund policy.</div>
+            <div className="flex items-center gap-4 text-xs text-gray-600">
+              <span>By continuing you agree to our terms & refund policy.</span>
+              {step >= 1 && (
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="underline hover:text-gray-800"
+                  aria-label="Clear all form fields"
+                >
+                  Clear all
+                </button>
+              )}
+            </div>
             <div className="flex items-center gap-3">
               {step > 1 && (
                 <button onClick={handleBack} className="px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100">Back</button>
               )}
-              {step < 3 && (
+              {step === 1 && (
+                <button onClick={handleNext} className="px-5 py-2.5 rounded-full bg-orange-600 text-white hover:bg-orange-700 shadow-md">
+                  {isFreeTrial ? "Start Free Trial" : "Next"}
+                </button>
+              )}
+              {step === 2 && !isFreeTrial && (
                 <button onClick={handleNext} className="px-5 py-2.5 rounded-full bg-orange-600 text-white hover:bg-orange-700 shadow-md">Next</button>
               )}
-              {step === 3 && (
+              {step === 3 && !isFreeTrial && (
                 <button onClick={handleConfirm} disabled={submitting} className="px-5 py-2.5 rounded-full bg-orange-600 text-white hover:bg-orange-700 shadow-md disabled:opacity-60">
                   {submitting ? "Verifying…" : "Confirm"}
+                </button>
+              )}
+              {step === 3 && isFreeTrial && (
+                <button onClick={() => router.push("/neet")} className="px-5 py-2.5 rounded-full bg-orange-600 text-white hover:bg-orange-700 shadow-md">
+                  Done
                 </button>
               )}
             </div>

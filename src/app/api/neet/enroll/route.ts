@@ -15,6 +15,7 @@ type Payload = {
   utr?: string;
   step?: 1 | 2 | 3;
   ts?: string;
+  freeTrial?: boolean;
 };
 
 export async function POST(req: Request) {
