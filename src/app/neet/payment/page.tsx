@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useId, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { paymentData, pricePlans } from "@/data/neetCourse";
@@ -32,6 +32,7 @@ function PaymentPageInner() {
   // Form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [academicStatus, setAcademicStatus] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -42,10 +43,56 @@ function PaymentPageInner() {
   const [confirmMessage, setConfirmMessage] = useState<string | null>(null);
   const [confirmError, setConfirmError] = useState<string | null>(null);
 
+  // Local persistence (avoid losing data on refresh)
+  const STORAGE_KEY = "neet-payment-form-v1";
+  const saveDebounce = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Load saved data once on mount
+  useEffect(() => {
+    try {
+      const raw = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
+      if (!raw) return;
+      const data = JSON.parse(raw) as Partial<{
+        firstName: string;
+        lastName: string;
+        academicStatus: string;
+        address: string;
+        email: string;
+        phone: string;
+        utr: string;
+        step: 1 | 2 | 3;
+      }>;
+      if (data.firstName) setFirstName(data.firstName);
+      if (data.lastName) setLastName(data.lastName);
+      if (data.academicStatus) setAcademicStatus(data.academicStatus);
+      if (data.address) setAddress(data.address);
+      if (data.email) setEmail(data.email);
+      if (data.phone) setPhone(data.phone);
+      if (data.utr) setUtr(data.utr);
+      if (data.step) setStep(data.step);
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Save when fields change (debounced)
+  useEffect(() => {
+    const payload = { firstName, lastName, academicStatus, address, email, phone, utr, step };
+    if (saveDebounce.current) clearTimeout(saveDebounce.current);
+    saveDebounce.current = setTimeout(() => {
+      try {
+        if (typeof window !== "undefined") localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      } catch {}
+    }, 300);
+    return () => {
+      if (saveDebounce.current) clearTimeout(saveDebounce.current);
+    };
+  }, [firstName, lastName, academicStatus, address, email, phone, utr, step]);
+
   const validateStep1 = () => {
     const next: Record<string, string> = {};
     if (!firstName.trim()) next.firstName = "First name is required";
     if (!lastName.trim()) next.lastName = "Last name is required";
+    if (!academicStatus) next.academicStatus = "Please select your current class/status";
     if (!address.trim()) next.address = "Address is required";
     if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) next.email = "Enter a valid email";
     if (!phone.match(/^\d{10}$/)) next.phone = "Enter a 10-digit phone";
@@ -55,6 +102,26 @@ function PaymentPageInner() {
 
   const handleNext = () => {
     if (step === 1 && !validateStep1()) return;
+    // Fire-and-forget: save an admin copy when user completes Step 1
+    if (step === 1) {
+      void fetch("/api/neet/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "checkout",
+          duration,
+          price: inferredPrice,
+          firstName,
+          lastName,
+          academicStatus,
+          address,
+          email,
+          phone,
+          step: 1 as const,
+          ts: new Date().toISOString(),
+        }),
+      }).catch(() => {});
+    }
     setStep((s) => (s === 1 ? 2 : 3));
   };
   const handleBack = () => setStep((s) => (s === 3 ? 2 : 1));
@@ -69,8 +136,29 @@ function PaymentPageInner() {
       setSubmitting(false);
       return;
     }
+    // Save admin copy with UTR on confirm
+    try {
+      await fetch("/api/neet/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "confirm",
+          duration,
+          price: inferredPrice,
+          firstName,
+          lastName,
+          academicStatus,
+          address,
+          email,
+          phone,
+          utr,
+          step: 3 as const,
+          ts: new Date().toISOString(),
+        }),
+      });
+    } catch {}
     setConfirmMessage(
-      "Payment received! We’ll verify the UTR and email you within 24 hours. Save this page or your order ID for reference."
+      "We’ll verify the UTR and email you within 24 hours. Save this page or your order ID for reference."
     );
     setSubmitting(false);
   };
@@ -130,6 +218,23 @@ function PaymentPageInner() {
                     {errors.lastName && <p className="mt-1 text-xs text-red-600">{errors.lastName}</p>}
                   </div>
                   <div className="sm:col-span-2">
+                    <label htmlFor={`${idPrefix}-status`} className="block text-sm font-medium text-gray-700">Current class/status</label>
+                    <select
+                      id={`${idPrefix}-status`}
+                      value={academicStatus}
+                      onChange={(e)=>setAcademicStatus(e.target.value)}
+                      className="mt-1 w-full rounded-lg border border-gray-300 p-3 bg-white focus:outline-none focus:ring-2 focus:ring-orange-300"
+                    >
+                      <option value="" disabled>
+                        Select your current class/status
+                      </option>
+                      <option value="class11">Class 11 (currently studying)</option>
+                      <option value="class12">Class 12 (currently studying)</option>
+                      <option value="completed12">Completed 12th (passed)</option>
+                    </select>
+                    {errors.academicStatus && <p className="mt-1 text-xs text-red-600">{errors.academicStatus}</p>}
+                  </div>
+                  <div className="sm:col-span-2">
                     <label htmlFor={`${idPrefix}-address`} className="block text-sm font-medium text-gray-700">Address</label>
                     <input id={`${idPrefix}-address`} value={address} onChange={(e)=>setAddress(e.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-orange-300" />
                     {errors.address && <p className="mt-1 text-xs text-red-600">{errors.address}</p>}
@@ -169,7 +274,7 @@ function PaymentPageInner() {
                       </ul>
                     </div>
                     <div className="mt-3 text-sm text-gray-600">
-                      Trouble paying? <a className="text-orange-700 underline" href="mailto:support@nirvant.example">Contact support</a>
+                      Trouble paying? <a className="text-orange-700 underline" href="mailto:nirvant.trgyy@gmail.com">Contact support</a>
                     </div>
                   </div>
                 </div>
@@ -215,7 +320,7 @@ function PaymentPageInner() {
 
         {/* Extras */}
         <div className="mt-6 text-sm text-gray-600">
-          <p>Need help? Email <a className="text-orange-700 underline" href="mailto:support@nirvant.example">support@nirvant.example</a></p>
+          <p>Need help? Email <a className="text-orange-700 underline" href="mailto:support@nirvant.example">nirvant.trgyy@gmail.com</a></p>
         </div>
       </div>
     </main>
