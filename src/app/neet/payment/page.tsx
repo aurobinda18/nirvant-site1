@@ -43,6 +43,7 @@ function PaymentPageInner() {
   const [utr, setUtr] = useState("");
   const [confirmMessage, setConfirmMessage] = useState<string | null>(null);
   const [confirmError, setConfirmError] = useState<string | null>(null);
+  const [adminSaveStatus, setAdminSaveStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
 
   // Local persistence (avoid losing data on refresh)
   const STORAGE_KEY = "neet-payment-form-v1";
@@ -104,6 +105,7 @@ function PaymentPageInner() {
     if (step === 1 && !validateStep1()) return;
     // Fire-and-forget: save an admin copy when user completes Step 1
     if (step === 1) {
+      setAdminSaveStatus("saving");
       void fetch("/api/neet/enroll", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -121,7 +123,9 @@ function PaymentPageInner() {
           step: 1 as const,
           ts: new Date().toISOString(),
         }),
-      }).catch(() => {});
+      })
+        .then((r) => setAdminSaveStatus(r.ok ? "saved" : "error"))
+        .catch(() => setAdminSaveStatus("error"));
       // If it's a free trial, skip payment and go straight to confirmation
       if (isFreeTrial) {
         setConfirmMessage(
@@ -245,7 +249,17 @@ function PaymentPageInner() {
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl border border-orange-100 overflow-hidden">
           {/* Body */}
-          <div className="p-6">
+          <div className="p-6 relative">
+            {adminSaveStatus === "saved" && (
+              <div className="absolute top-2 right-3 text-xs text-green-700 bg-green-50 border border-green-200 rounded-full px-2 py-0.5">
+                Saved
+              </div>
+            )}
+            {adminSaveStatus === "error" && (
+              <div className="absolute top-2 right-3 text-xs text-red-700 bg-red-50 border border-red-200 rounded-full px-2 py-0.5">
+                Save failed
+              </div>
+            )}
             {step === 1 && (
               <div className="space-y-5">
                 <div className="flex items-center justify-between">

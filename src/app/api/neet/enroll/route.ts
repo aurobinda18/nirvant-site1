@@ -50,3 +50,28 @@ export async function POST(req: Request) {
 }
 
 export const dynamic = "force-dynamic"; // ensure Node runtime and file IO
+export const runtime = "nodejs";
+
+export async function GET(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const limit = Math.max(1, Math.min(100, parseInt(searchParams.get("limit") || "20", 10)));
+    const dir = path.join(process.cwd(), "server-data");
+    const file = path.join(dir, "neet_enrollments.jsonl");
+    const raw = await fs.readFile(file, "utf8");
+    const lines = raw
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .slice(-limit);
+    const items = lines.map((l) => {
+      try {
+        return JSON.parse(l);
+      } catch {
+        return null;
+      }
+    }).filter(Boolean);
+    return NextResponse.json({ ok: true, items });
+  } catch (err) {
+    return NextResponse.json({ ok: false, items: [] }, { status: 200 });
+  }
+}
