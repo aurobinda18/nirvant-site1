@@ -124,7 +124,14 @@ function PaymentPageInner() {
           ts: new Date().toISOString(),
         }),
       })
-        .then((r) => setAdminSaveStatus(r.ok ? "saved" : "error"))
+        .then(async (r) => {
+          try {
+            const body = await r.json();
+            setAdminSaveStatus(r.ok && body?.ok ? "saved" : "error");
+          } catch {
+            setAdminSaveStatus(r.ok ? "saved" : "error");
+          }
+        })
         .catch(() => setAdminSaveStatus("error"));
       // If it's a free trial, skip payment and go straight to confirmation
       if (isFreeTrial) {
