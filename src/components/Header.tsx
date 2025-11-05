@@ -12,7 +12,7 @@ export default function Header() {
   const menu = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/neet" },
-    { name: "About", href: "/about" },
+    { name: "Team", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "T&C", href: "/tnc" },
   ];

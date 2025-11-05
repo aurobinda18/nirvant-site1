@@ -1,50 +1,57 @@
 "use client";
-import { motion } from "framer-motion";
-import { termsAndConditions } from "@/data/tnc";
+import { termsAndConditions, termsOfUse } from "@/data/tnc";
 
 export default function TermsPage() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 py-20 px-6 md:px-24 text-gray-800">
+    <section className="min-h-screen bg-[#fffef9] py-20 px-6 md:px-24 text-gray-800">
       <div className="max-w-4xl mx-auto">
-        {/* Page Header */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-10 text-center"
-        >
+        {/* Header */}
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 text-center">
+          Terms & Policies
+        </h1>
+
+        <p className="text-lg text-gray-700 text-center mb-16 leading-relaxed max-w-2xl mx-auto">
+          Please read these carefully before using Nirvant. By continuing, you agree to the
+          Terms & Conditions and Terms of Use outlined below.
+        </p>
+
+        {/* Terms & Conditions Section */}
+        <h2 className="text-3xl font-bold text-amber-700 mb-6 text-center">
           Terms and Conditions
-        </motion.h1>
-
-        {/* Description Intro */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
-          className="text-lg text-gray-700 text-center mb-16 leading-relaxed max-w-2xl mx-auto"
-        >
-          Please read these terms carefully before using Nirvant. By accessing or using our
-          platform, you agree to the following terms, conditions, and policies.
-        </motion.p>
-
-        {/* Terms Sections */}
-        <div className="space-y-12">
+        </h2>
+        <div className="space-y-12 mb-16">
           {termsAndConditions.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="relative bg-white/80 backdrop-blur-md border border-amber-100 rounded-2xl shadow-sm p-6 md:p-8 hover:shadow-md transition-all duration-300"
+              className="bg-white border border-amber-100 rounded-xl shadow-sm p-8"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-amber-600 mb-4">
+              <h3 className="text-2xl font-semibold text-amber-800 mb-4">
                 {item.title}
-              </h2>
+              </h3>
               <p className="text-base md:text-lg leading-relaxed whitespace-pre-line text-gray-800">
                 {item.content}
               </p>
-            </motion.div>
+            </div>
+          ))}
+        </div>
+
+        {/* Terms of Use Section */}
+        <h2 className="text-3xl font-bold text-amber-700 mb-6 text-center">
+          Terms of Use
+        </h2>
+        <div className="space-y-12">
+          {termsOfUse.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white border border-amber-100 rounded-xl shadow-sm p-8"
+            >
+              <h3 className="text-2xl font-semibold text-amber-800 mb-4">
+                {item.title}
+              </h3>
+              <p className="text-base md:text-lg leading-relaxed whitespace-pre-line text-gray-800">
+                {item.content}
+              </p>
+            </div>
           ))}
         </div>
 

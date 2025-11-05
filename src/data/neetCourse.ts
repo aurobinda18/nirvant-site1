@@ -95,8 +95,8 @@ export const faqItems: FAQItem[] = [
 // Payment Section Data
 // ----------------------------
 export const paymentData = {
-  upiId: "nirvant@upi",        // placeholder UPI ID
-  qrImage: "/upi-qr.svg",      // path to QR code image (placeholder svg)
+  upiId: "nayakaurobinda618@okhdfcbank",        // placeholder UPI ID
+  qrImage: "/upi-qr.png",      // path to QR code image (placeholder svg)
   utrPlaceholder: "Enter your 8-digit UTR code",
   confirmButton: "Confirm Payment",
   successMessage: "Welcome aboard! Your NEET 2026 journey with Nirvant has begun. We’ll verify your payment and reach out shortly.",
